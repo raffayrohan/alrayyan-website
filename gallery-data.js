@@ -86,8 +86,8 @@
     {
       serial: 6,
       src: "gallery/shade-3.jpeg",
-      category: "pergolas",
-      titleAr: "برجولات كلادينج خشبية",
+      category: "shades",
+      titleAr: "مظلات فرنسي",
       titleEn: "Car Shades - #6",
       descAr: "حلول كاملة للتظليل وتفصيل جميع أنواع مظلات السيارات.",
       descEn: "Complete shading solutions and custom car shades."
@@ -149,8 +149,8 @@
     {
       serial: 13,
       src: "gallery/pergola-2.jpeg",
-      category: "tents",
-      titleAr: "بيوت شعر (صندوق)",
+      category: "pergolas",
+      titleAr: "برجولات كلادينج خشبية",
       titleEn: "Pergolas - #13",
       descAr: "ابتكار مساحات استرخاء خارجية وبرجولات للحدائق.",
       descEn: "Innovative outdoor relaxation spaces and pergolas for gardens."
@@ -167,8 +167,8 @@
     {
       serial: 15,
       src: "gallery/pergola-4.jpeg",
-      category: "pergolas",
-      titleAr: "برجولات - رقم 15",
+      category: "tents",
+      titleAr: "بيوت شعر (صندوق)",
       titleEn: "Pergolas - #15",
       descAr: "ابتكار مساحات استرخاء خارجية وبرجولات للحدائق.",
       descEn: "Innovative outdoor relaxation spaces and pergolas for gardens."
@@ -257,8 +257,8 @@
     {
       serial: 25,
       src: "gallery/decor-5.jpeg",
-      category: "panels",
-      titleAr: "غرف سندويش بنل",
+      category: "decor",
+      titleAr: "ديكورات بديل الخشب",
       titleEn: "Sandwich Panel Rooms",
       descAr: "إنشاء وتجهيز غرف سندويش بنل خارجية ومجالس مودرن بأعلى معايير العزل الحراري والتشطيب الفاخر.",
       descEn: "Turnkey modern insulated sandwich panel rooms and luxury outdoor extensions."
