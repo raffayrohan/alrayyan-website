@@ -1,24 +1,23 @@
 // =========================================================================
 // Al-Rayyan Dynamic Gallery Data & Controller (gallery-data.js)
 // Zero-conflict architecture — works seamlessly with index.html
-// Updated with all final client title & category corrections:
-//   - Image #4  -> Category: shades   | Title Ar: مظلات مخروطي PVDF
-//   - Image #5  -> Category: shades   | Title Ar: مظلات إنشائية
-//   - Image #6  -> Category: pergolas | Title Ar: برجولات كلادينج خشبية
-//   - Image #7  -> Category: shades   | Title Ar: مظلات فرنسي
-//   - Image #8  -> Category: swater   | Title Ar: سواتر لكسان
-//   - Image #9  -> Category: swater   | Title Ar: سواتر قص ليزر
-//   - Image #11 -> Category: pergolas | Title Ar: برجولة مودرن
-//   - Image #12 -> Category: pergolas | Title Ar: برجولات حديد مع لكسان
-//   - Image #13 -> Category: tents    | Title Ar: بيوت شعر (صندوق)
-//   - Image #14 -> Category: shades   | Title Ar: مظلات سيارات
-//   - Image #18 -> Category: qarmid   | Title Ar: قرميد فخار إيطالي
-//   - Image #20 -> Category: pergolas | Title Ar: برجولات حديد ولكسان
-//   - Image #22 -> Category: pergolas | Title Ar: برجولات حديد مودرن
-//   - Image #23 -> Category: decor    | Title Ar: ديكورات عشبية 3D
-//   - Image #24 -> Category: decor    | Title Ar: ديكورات عشب 3D مع بديل الخشب
-//   - Image #25 -> Category: panels   | Title Ar: غرف سندويش بنل
-//   - Image #26 -> Category: decor    | Title Ar: ديكورات بديل الخشب
+// Strictly maps each Arabic title (titleAr) and category to its exact
+// English image filename in the gallery/ folder:
+//   - gallery/shade-1.jpeg   -> مظلات مخروطي PVDF (shades)
+//   - gallery/shade-2.jpeg   -> مظلات إنشائية (shades)
+//   - gallery/shade-3.jpeg   -> برجولات كلادينج خشبية (pergolas)
+//   - gallery/shade-5.jpeg   -> مظلات فرنسي (shades)
+//   - gallery/shade-6.jpeg   -> مظلات سيارات (shades)
+//   - gallery/swater-1.jpeg  -> سواتر قص ليزر (swater)
+//   - gallery/swater-2.jpeg  -> سواتر لكسان (swater)
+//   - gallery/pergola-1.jpeg -> برجولات حديد مع لكسان (pergolas)
+//   - gallery/pergola-2.jpeg -> برجولات حديد ولكسان (pergolas)
+//   - gallery/pergola-3.jpeg -> برجولات حديد مودرن (pergolas)
+//   - gallery/tent-1.jpeg    -> بيوت شعر (صندوق) (tents)
+//   - gallery/decor-1.jpeg   -> ديكورات عشبية 3D (decor)
+//   - gallery/decor-2.jpeg   -> ديكورات عشب 3D مع بديل الخشب (decor)
+//   - gallery/decor-3.jpeg   -> ديكورات بديل الخشب (decor)
+//   - gallery/decor-4.jpeg   -> غرف سندويش بنل (panels)
 // =========================================================================
 (function() {
   if (window.__RAYYAN_GALLERY_INITIALIZED__) return;
@@ -34,20 +33,11 @@
         img.setAttribute("data-orig", orig);
       }
       const basePath = orig.replace(/\.[a-zA-Z0-9]+$/, "");
-      const altSrc = img.getAttribute("data-alt-src") || "";
-      const candidates = [];
-      if (altSrc) candidates.push(altSrc);
-      candidates.push(
-        basePath + ".jpg",
-        basePath + ".png",
-        basePath + ".webp",
-        basePath + ".JPG",
-        basePath + ".JPEG"
-      );
+      const candidates = [".jpg", ".png", ".webp", ".JPG", ".JPEG"];
 
       if (currentTry < candidates.length) {
         img.setAttribute("data-try", (currentTry + 1).toString());
-        img.src = candidates[currentTry];
+        img.src = basePath + candidates[currentTry];
         return;
       }
 
@@ -59,7 +49,8 @@
     };
   }
 
-  // Complete, unique portfolio items aligned with client image numbers & sources
+  // Complete, unique portfolio items fetched exclusively from gallery/ folder
+  // with exact filename-to-title & category mappings
   const galleryData = [
     {
       serial: 1,
@@ -127,11 +118,11 @@
     {
       serial: 8,
       src: "gallery/shade-6.jpeg",
-      category: "swater",
-      titleAr: "سواتر لكسان",
-      titleEn: "Lexan Swater",
-      descAr: "تنفيذ سواتر لكسان بولي كربونيت ضد الكسر بتصاميم فخمة تجمع بين الخصوصية والجمال العصري.",
-      descEn: "Unbreakable polycarbonate Lexan privacy screens combining luxury aesthetics with full privacy."
+      category: "shades",
+      titleAr: "مظلات سيارات",
+      titleEn: "Car Parking Shades",
+      descAr: "حلول كاملة للتظليل وتفصيل جميع أنواع مظلات السيارات بأفضل الخامات المقاومة للشمس والرطوبة.",
+      descEn: "Complete shading solutions and custom car parking shades with weather-resistant materials."
     },
     {
       serial: 9,
@@ -146,19 +137,19 @@
       serial: 10,
       src: "gallery/swater-2.jpeg",
       category: "swater",
-      titleAr: "سواتر - رقم 10",
-      titleEn: "Privacy Screens - #10",
-      descAr: "تركيب سواتر حديثة توفر الخصوصية التامة والحماية.",
-      descEn: "Installation of modern privacy screens providing complete protection."
+      titleAr: "سواتر لكسان",
+      titleEn: "Lexan Swater",
+      descAr: "تنفيذ سواتر لكسان بولي كربونيت ضد الكسر بتصاميم فخمة تجمع بين الخصوصية والجمال العصري.",
+      descEn: "Unbreakable polycarbonate Lexan privacy screens combining luxury aesthetics with full privacy."
     },
     {
       serial: 11,
       src: "gallery/swater-3.jpeg",
-      category: "pergolas",
-      titleAr: "برجولة مودرن",
-      titleEn: "Modern Pergola",
-      descAr: "تصميم وتنفيذ برجولة مودرن للحدائق والأسطح والجلسات الخارجية بلمسات معمارية أنيقة.",
-      descEn: "Bespoke modern pergola for gardens, rooftops, and outdoor seating areas."
+      category: "swater",
+      titleAr: "سواتر حديد",
+      titleEn: "Iron Swater",
+      descAr: "تركيب سواتر حديد (شرائح ومجدول) بدهانات فرن حرارية مقاومة للصدأ توفر الخصوصية التامة والأمان.",
+      descEn: "Installation of oven-painted rust-resistant iron privacy screens providing complete security."
     },
     {
       serial: 12,
@@ -172,69 +163,6 @@
     {
       serial: 13,
       src: "gallery/pergola-2.jpeg",
-      category: "tents",
-      titleAr: "بيوت شعر (صندوق)",
-      titleEn: "Box-Style Traditional Tents",
-      descAr: "تفصيل وتركيب بيوت شعر ملكية وعادية بنظام صندوق متكامل العزل الحراري والمائي وبتشطيبات راقية.",
-      descEn: "Custom box-style royal and traditional tents with full thermal and waterproof insulation."
-    },
-    {
-      serial: 14,
-      src: "gallery/pergola-3.jpeg",
-      category: "shades",
-      titleAr: "مظلات سيارات",
-      titleEn: "Car Parking Shades",
-      descAr: "حلول كاملة للتظليل وتفصيل جميع أنواع مظلات السيارات بأفضل الخامات المقاومة للشمس والرطوبة.",
-      descEn: "Complete shading solutions and custom car parking shades with weather-resistant materials."
-    },
-    {
-      serial: 15,
-      src: "gallery/pergola-4.jpeg",
-      category: "pergolas",
-      titleAr: "برجولات - رقم 15",
-      titleEn: "Pergolas - #15",
-      descAr: "ابتكار مساحات استرخاء خارجية وبرجولات للحدائق.",
-      descEn: "Innovative outdoor relaxation spaces and pergolas for gardens."
-    },
-    {
-      serial: 16,
-      src: "gallery/tent-1.jpeg",
-      category: "tents",
-      titleAr: "بيوت شعر - رقم 16",
-      titleEn: "Traditional Tents - #16",
-      descAr: "تفصيل وتركيب بيوت شعر ملكية وعادية بتصاميم تراثية وعصرية.",
-      descEn: "Custom royal and regular traditional tents with modern designs."
-    },
-    {
-      serial: 17,
-      src: "gallery/tent-2.jpeg",
-      category: "tents",
-      titleAr: "بيوت شعر - رقم 17",
-      titleEn: "Traditional Tents - #17",
-      descAr: "تفصيل وتركيب بيوت شعر ملكية وعادية بتصاميم تراثية وعصرية.",
-      descEn: "Custom royal and regular traditional tents with modern designs."
-    },
-    {
-      serial: 18,
-      src: "gallery/tent-3.jpeg",
-      category: "qarmid",
-      titleAr: "قرميد فخار إيطالي",
-      titleEn: "Italian Pottery Qarmid",
-      descAr: "توريد وتركيب قرميد فخار إيطالي أصلي للأسقف والملاحق والواجهات مع العزل المائي والحراري المتكامل.",
-      descEn: "Supply and installation of authentic Italian terracotta clay roof tiles with full insulation."
-    },
-    {
-      serial: 19,
-      src: "gallery/qarmid-1.jpeg",
-      category: "qarmid",
-      titleAr: "قرميد إيطالي ومعدني - رقم 19",
-      titleEn: "Italian & Metal Qarmid - #19",
-      descAr: "توريد وتركيب القرميد الإيطالي والمعدني للأسطح والواجهات.",
-      descEn: "Supply and installation of Italian and metal roof tiles."
-    },
-    {
-      serial: 20,
-      src: "gallery/qarmid-2.jpeg",
       category: "pergolas",
       titleAr: "برجولات حديد ولكسان",
       titleEn: "Iron & Lexan Pergolas",
@@ -242,18 +170,8 @@
       descEn: "Custom iron pergolas topped with unbreakable polycarbonate Lexan sheets."
     },
     {
-      serial: 21,
-      src: "images services/قرميد معدني.jpeg",
-      altSrc: "gallery/qarmid-3.jpeg",
-      category: "qarmid",
-      titleAr: "قرميد معدني وكوري - رقم 21",
-      titleEn: "Metal & Korean Qarmid - #21",
-      descAr: "توريد وتركيب القرميد المعدني والكوري المقاوم للصدأ والرطوبة للأسطح والواجهات.",
-      descEn: "Supply and installation of rust-resistant metal and Korean roof tiles."
-    },
-    {
-      serial: 22,
-      src: "gallery/decor-1.jpeg",
+      serial: 14,
+      src: "gallery/pergola-3.jpeg",
       category: "pergolas",
       titleAr: "برجولات حديد مودرن",
       titleEn: "Modern Iron Pergolas",
@@ -261,8 +179,62 @@
       descEn: "Design and installation of modern iron pergolas for gardens and outdoor seating areas."
     },
     {
-      serial: 23,
-      src: "gallery/decor-2.jpeg",
+      serial: 15,
+      src: "gallery/pergola-4.jpeg",
+      category: "pergolas",
+      titleAr: "برجولة مودرن",
+      titleEn: "Modern Pergola",
+      descAr: "تصميم وتنفيذ برجولة مودرن للحدائق والأسطح والجلسات الخارجية بلمسات معمارية أنيقة.",
+      descEn: "Bespoke modern pergola for gardens, rooftops, and outdoor seating areas."
+    },
+    {
+      serial: 16,
+      src: "gallery/tent-1.jpeg",
+      category: "tents",
+      titleAr: "بيوت شعر (صندوق)",
+      titleEn: "Box-Style Traditional Tents",
+      descAr: "تفصيل وتركيب بيوت شعر ملكية وعادية بنظام صندوق متكامل العزل الحراري والمائي وبتشطيبات راقية.",
+      descEn: "Custom box-style royal and traditional tents with full thermal and waterproof insulation."
+    },
+    {
+      serial: 17,
+      src: "gallery/tent-2.jpeg",
+      category: "tents",
+      titleAr: "بيوت شعر ملكي",
+      titleEn: "Royal Traditional Tents",
+      descAr: "تفصيل وتركيب بيوت شعر ملكية وعادية بتصاميم تراثية وعصرية.",
+      descEn: "Custom royal and regular traditional tents with modern designs."
+    },
+    {
+      serial: 18,
+      src: "gallery/tent-3.jpeg",
+      category: "tents",
+      titleAr: "بيوت شعر ومجالس",
+      titleEn: "Traditional Tents & Majlis",
+      descAr: "تفصيل وتركيب بيوت شعر ملكية وعادية بتصاميم تراثية وعصرية.",
+      descEn: "Custom royal and regular traditional tents with modern designs."
+    },
+    {
+      serial: 19,
+      src: "gallery/qarmid-1.jpeg",
+      category: "qarmid",
+      titleAr: "قرميد فخار إيطالي",
+      titleEn: "Italian Pottery Qarmid",
+      descAr: "توريد وتركيب قرميد فخار إيطالي أصلي للأسقف والملاحق والواجهات مع العزل المائي والحراري المتكامل.",
+      descEn: "Supply and installation of authentic Italian terracotta clay roof tiles with full insulation."
+    },
+    {
+      serial: 20,
+      src: "gallery/qarmid-2.jpeg",
+      category: "qarmid",
+      titleAr: "قرميد إيطالي ومعدني",
+      titleEn: "Italian & Metal Qarmid",
+      descAr: "توريد وتركيب القرميد الإيطالي والمعدني للأسطح والواجهات.",
+      descEn: "Supply and installation of Italian and metal roof tiles."
+    },
+    {
+      serial: 21,
+      src: "gallery/decor-1.jpeg",
       category: "decor",
       titleAr: "ديكورات عشبية 3D",
       titleEn: "3D Grass Decor",
@@ -270,8 +242,8 @@
       descEn: "3D artificial grass wall decor and landscaping for gardens, courtyards, and outdoor seating."
     },
     {
-      serial: 24,
-      src: "gallery/decor-3.jpeg",
+      serial: 22,
+      src: "gallery/decor-2.jpeg",
       category: "decor",
       titleAr: "ديكورات عشب 3D مع بديل الخشب",
       titleEn: "3D Grass & Wood-Alternative Decor",
@@ -279,7 +251,16 @@
       descEn: "Exterior wall decor combining 3D artificial greenery with weather-resistant WPC wood alternatives."
     },
     {
-      serial: 25,
+      serial: 23,
+      src: "gallery/decor-3.jpeg",
+      category: "decor",
+      titleAr: "ديكورات بديل الخشب",
+      titleEn: "Wood-Alternative Decor",
+      descAr: "تركيب تكسيات وديكورات بديل الخشب (WPC) الفاخرة المقاومة للرطوبة والحرارة للواجهات والجلسات الخارجية.",
+      descEn: "Installation of weather-resistant WPC wood-alternative cladding and exterior decorative finishes."
+    },
+    {
+      serial: 24,
       src: "gallery/decor-4.jpeg",
       category: "panels",
       titleAr: "غرف سندويش بنل",
@@ -288,29 +269,29 @@
       descEn: "Design and construction of modern insulated sandwich panel rooms and backyard extensions."
     },
     {
-      serial: 26,
+      serial: 25,
       src: "gallery/decor-5.jpeg",
-      category: "decor",
-      titleAr: "ديكورات بديل الخشب",
-      titleEn: "Wood-Alternative Decor",
-      descAr: "تركيب تكسيات وديكورات بديل الخشب (WPC) الفاخرة المقاومة للرطوبة والحرارة للواجهات والجلسات الخارجية.",
-      descEn: "Installation of weather-resistant WPC wood-alternative cladding and exterior decorative finishes."
+      category: "panels",
+      titleAr: "غرف سندويش بنل",
+      titleEn: "Sandwich Panel Rooms",
+      descAr: "إنشاء وتجهيز غرف سندويش بنل خارجية ومجالس مودرن بأعلى معايير العزل الحراري والتشطيب الفاخر.",
+      descEn: "Turnkey modern insulated sandwich panel rooms and luxury outdoor extensions."
     },
     {
-      serial: 27,
+      serial: 26,
       src: "gallery/tensile-1.jpeg",
       category: "tensile",
-      titleAr: "مظلات الشد الإنشائي - رقم 27",
-      titleEn: "Tensile Shades - #27",
+      titleAr: "مظلات الشد الإنشائي - رقم 26",
+      titleEn: "Tensile Shades - #26",
       descAr: "مظلات هندسية بأقمشة PVC و PVDF المقاومة للماء.",
       descEn: "Giant engineered shades with waterproof PVC/PVDF fabrics."
     },
     {
-      serial: 28,
+      serial: 27,
       src: "gallery/tensile-2.jpeg",
       category: "tensile",
-      titleAr: "مظلات الشد الإنشائي - رقم 28",
-      titleEn: "Tensile Shades - #28",
+      titleAr: "مظلات الشد الإنشائي - رقم 27",
+      titleEn: "Tensile Shades - #27",
       descAr: "مظلات هندسية بأقمشة PVC و PVDF المقاومة للماء.",
       descEn: "Giant engineered shades with waterproof PVC/PVDF fabrics."
     }
@@ -371,12 +352,10 @@
         '</svg>'
       );
 
-      const altSrcAttr = item.altSrc ? (' data-alt-src="' + item.altSrc + '"') : '';
-
       const cardHtml =
         '<div class="gallery-item" data-category="' + item.category + '" data-serial="' + badgeNum + '">' +
           '<div class="gallery-img-wrapper" style="object-fit: cover; width: 100%; height: 100%;">' +
-            '<img src="' + item.src + '"' + altSrcAttr + ' alt="' + item.titleAr + ' - ' + item.descAr + '" loading="lazy" decoding="async" style="object-fit: cover; width: 100%; height: 100%;" data-fallback="' + fallbackSvg + '" onerror="window.__handleGalleryImgError&&window.__handleGalleryImgError(this)">' +
+            '<img src="' + item.src + '" alt="' + item.titleAr + ' - ' + item.descAr + '" loading="lazy" decoding="async" style="object-fit: cover; width: 100%; height: 100%;" data-fallback="' + fallbackSvg + '" onerror="window.__handleGalleryImgError&&window.__handleGalleryImgError(this)">' +
             '<span class="gallery-badge">#' + badgeNum + '</span>' +
           '</div>' +
           '<div class="gallery-card-body">' +
