@@ -1,10 +1,24 @@
 // =========================================================================
 // Al-Rayyan Dynamic Gallery Data & Controller (gallery-data.js)
 // Zero-conflict architecture — works seamlessly with index.html
-// - Fetches images ONLY from the gallery/ folder (English filenames)
-// - Every entry uses a 100% unique image (duplicate between #8 and #21 resolved)
-// - Sandwich Panel Rooms entries updated to titleAr: "غرف سندويش بنل" & category: "panels"
-// - Every <img> tag includes loading="lazy" decoding="async" and object-fit: cover
+// Updated with all final client title & category corrections:
+//   - Image #4  -> Category: shades   | Title Ar: مظلات مخروطي PVDF
+//   - Image #5  -> Category: shades   | Title Ar: مظلات إنشائية
+//   - Image #6  -> Category: pergolas | Title Ar: برجولات كلادينج خشبية
+//   - Image #7  -> Category: shades   | Title Ar: مظلات فرنسي
+//   - Image #8  -> Category: swater   | Title Ar: سواتر لكسان
+//   - Image #9  -> Category: swater   | Title Ar: سواتر قص ليزر
+//   - Image #11 -> Category: pergolas | Title Ar: برجولة مودرن
+//   - Image #12 -> Category: pergolas | Title Ar: برجولات حديد مع لكسان
+//   - Image #13 -> Category: tents    | Title Ar: بيوت شعر (صندوق)
+//   - Image #14 -> Category: shades   | Title Ar: مظلات سيارات
+//   - Image #18 -> Category: qarmid   | Title Ar: قرميد فخار إيطالي
+//   - Image #20 -> Category: pergolas | Title Ar: برجولات حديد ولكسان
+//   - Image #22 -> Category: pergolas | Title Ar: برجولات حديد مودرن
+//   - Image #23 -> Category: decor    | Title Ar: ديكورات عشبية 3D
+//   - Image #24 -> Category: decor    | Title Ar: ديكورات عشب 3D مع بديل الخشب
+//   - Image #25 -> Category: panels   | Title Ar: غرف سندويش بنل
+//   - Image #26 -> Category: decor    | Title Ar: ديكورات بديل الخشب
 // =========================================================================
 (function() {
   if (window.__RAYYAN_GALLERY_INITIALIZED__) return;
@@ -20,11 +34,20 @@
         img.setAttribute("data-orig", orig);
       }
       const basePath = orig.replace(/\.[a-zA-Z0-9]+$/, "");
-      const candidates = [".jpg", ".png", ".webp", ".JPG", ".JPEG"];
+      const altSrc = img.getAttribute("data-alt-src") || "";
+      const candidates = [];
+      if (altSrc) candidates.push(altSrc);
+      candidates.push(
+        basePath + ".jpg",
+        basePath + ".png",
+        basePath + ".webp",
+        basePath + ".JPG",
+        basePath + ".JPEG"
+      );
 
       if (currentTry < candidates.length) {
         img.setAttribute("data-try", (currentTry + 1).toString());
-        img.src = basePath + candidates[currentTry];
+        img.src = candidates[currentTry];
         return;
       }
 
@@ -36,7 +59,7 @@
     };
   }
 
-  // Complete, unique portfolio items fetched exclusively from gallery/ folder
+  // Complete, unique portfolio items aligned with client image numbers & sources
   const galleryData = [
     {
       serial: 1,
@@ -86,20 +109,20 @@
     {
       serial: 6,
       src: "gallery/shade-3.jpeg",
-      category: "shades",
-      titleAr: "مظلات سيارات - رقم 6",
-      titleEn: "Car Shades - #6",
-      descAr: "حلول كاملة للتظليل وتفصيل جميع أنواع مظلات السيارات.",
-      descEn: "Complete shading solutions and custom car shades."
+      category: "pergolas",
+      titleAr: "برجولات كلادينج خشبية",
+      titleEn: "Wooden Cladding Pergolas",
+      descAr: "تصميم وتنفيذ برجولات كلادينج خشبية فاخرة للحدائق والمداخل والجلسات الخارجية بتشطيبات عصرية.",
+      descEn: "Design and installation of luxury wooden cladding pergolas for gardens, entrances, and outdoor seating."
     },
     {
       serial: 7,
       src: "gallery/shade-5.jpeg",
-      category: "swater",
-      titleAr: "سواتر حديد",
-      titleEn: "Iron Swater",
-      descAr: "تركيب سواتر حديد (شرائح ومجدول) بدهانات فرن حرارية مقاومة للصدأ توفر الخصوصية التامة والأمان.",
-      descEn: "Installation of oven-painted rust-resistant iron privacy screens providing complete security."
+      category: "shades",
+      titleAr: "مظلات فرنسي",
+      titleEn: "French Car Shades",
+      descAr: "تفصيل وتركيب مظلات سيارات بقماش فرنسي أصلي عالي الكثافة مقاوم للحرارة والأشعة فوق البنفسجية.",
+      descEn: "Custom car shades crafted with high-density French architectural fabric resistant to heat and UV rays."
     },
     {
       serial: 8,
@@ -114,10 +137,10 @@
       serial: 9,
       src: "gallery/swater-1.jpeg",
       category: "swater",
-      titleAr: "سواتر - رقم 9",
-      titleEn: "Privacy Screens - #9",
-      descAr: "تركيب سواتر حديثة توفر الخصوصية التامة والحماية.",
-      descEn: "Installation of modern privacy screens providing complete protection."
+      titleAr: "سواتر قص ليزر",
+      titleEn: "Laser-Cut Privacy Screens",
+      descAr: "تصميم وتركيب سواتر حديد مشغولة بزخارف قص ليزر (CNC) بدهانات فرن حرارية توفر الخصوصية والفخامة.",
+      descEn: "Custom CNC laser-cut iron privacy screens with oven-baked finishes for luxury and security."
     },
     {
       serial: 10,
@@ -141,28 +164,28 @@
       serial: 12,
       src: "gallery/pergola-1.jpeg",
       category: "pergolas",
-      titleAr: "برجولات - رقم 12",
-      titleEn: "Pergolas - #12",
-      descAr: "ابتكار مساحات استرخاء خارجية وبرجولات للحدائق.",
-      descEn: "Innovative outdoor relaxation spaces and pergolas for gardens."
+      titleAr: "برجولات حديد مع لكسان",
+      titleEn: "Iron & Lexan Pergolas",
+      descAr: "تركيب برجولات حديد مع تغطية ألواح لكسان مقاومة للكسر والأمطار للجلسات الخارجية والحدائق.",
+      descEn: "Iron pergolas with unbreakable polycarbonate Lexan roofing for outdoor seating and gardens."
     },
     {
       serial: 13,
       src: "gallery/pergola-2.jpeg",
-      category: "pergolas",
-      titleAr: "برجولات - رقم 13",
-      titleEn: "Pergolas - #13",
-      descAr: "ابتكار مساحات استرخاء خارجية وبرجولات للحدائق.",
-      descEn: "Innovative outdoor relaxation spaces and pergolas for gardens."
+      category: "tents",
+      titleAr: "بيوت شعر (صندوق)",
+      titleEn: "Box-Style Traditional Tents",
+      descAr: "تفصيل وتركيب بيوت شعر ملكية وعادية بنظام صندوق متكامل العزل الحراري والمائي وبتشطيبات راقية.",
+      descEn: "Custom box-style royal and traditional tents with full thermal and waterproof insulation."
     },
     {
       serial: 14,
       src: "gallery/pergola-3.jpeg",
-      category: "pergolas",
-      titleAr: "برجولات - رقم 14",
-      titleEn: "Pergolas - #14",
-      descAr: "ابتكار مساحات استرخاء خارجية وبرجولات للحدائق.",
-      descEn: "Innovative outdoor relaxation spaces and pergolas for gardens."
+      category: "shades",
+      titleAr: "مظلات سيارات",
+      titleEn: "Car Parking Shades",
+      descAr: "حلول كاملة للتظليل وتفصيل جميع أنواع مظلات السيارات بأفضل الخامات المقاومة للشمس والرطوبة.",
+      descEn: "Complete shading solutions and custom car parking shades with weather-resistant materials."
     },
     {
       serial: 15,
@@ -220,33 +243,43 @@
     },
     {
       serial: 21,
-      src: "gallery/decor-1.jpeg",
-      category: "decor",
-      titleAr: "ديكورات عشبية ولكسان - رقم 21",
-      titleEn: "Grass & Lexan Decor - #21",
-      descAr: "تصميم وتنفيذ الديكورات الخارجية باستخدام بديل الخشب والعشب.",
-      descEn: "Exterior decorations using weather-resistant wood alternatives and grass."
+      src: "images services/قرميد معدني.jpeg",
+      altSrc: "gallery/qarmid-3.jpeg",
+      category: "qarmid",
+      titleAr: "قرميد معدني وكوري - رقم 21",
+      titleEn: "Metal & Korean Qarmid - #21",
+      descAr: "توريد وتركيب القرميد المعدني والكوري المقاوم للصدأ والرطوبة للأسطح والواجهات.",
+      descEn: "Supply and installation of rust-resistant metal and Korean roof tiles."
     },
     {
       serial: 22,
-      src: "gallery/decor-2.jpeg",
-      category: "decor",
-      titleAr: "ديكورات عشبية ولكسان - رقم 22",
-      titleEn: "Grass & Lexan Decor - #22",
-      descAr: "تصميم وتنفيذ الديكورات الخارجية باستخدام بديل الخشب والعشب.",
-      descEn: "Exterior decorations using weather-resistant wood alternatives and grass."
+      src: "gallery/decor-1.jpeg",
+      category: "pergolas",
+      titleAr: "برجولات حديد مودرن",
+      titleEn: "Modern Iron Pergolas",
+      descAr: "تصميم وتنفيذ برجولات حديد مودرن للحدائق والجلسات الخارجية بدهانات حرارية مقاومة للرطوبة والصدأ.",
+      descEn: "Design and installation of modern iron pergolas for gardens and outdoor seating areas."
     },
     {
       serial: 23,
-      src: "gallery/decor-3.jpeg",
+      src: "gallery/decor-2.jpeg",
       category: "decor",
-      titleAr: "ديكورات عشبية ولكسان - رقم 23",
-      titleEn: "Grass & Lexan Decor - #23",
-      descAr: "تصميم وتنفيذ الديكورات الخارجية باستخدام بديل الخشب والعشب.",
-      descEn: "Exterior decorations using weather-resistant wood alternatives and grass."
+      titleAr: "ديكورات عشبية 3D",
+      titleEn: "3D Grass Decor",
+      descAr: "تصميم وتنفيذ جداريات وديكورات عشبية ثلاثية الأبعاد (3D) لتزيين الحدائق والأحواش والجلسات الخارجية.",
+      descEn: "3D artificial grass wall decor and landscaping for gardens, courtyards, and outdoor seating."
     },
     {
       serial: 24,
+      src: "gallery/decor-3.jpeg",
+      category: "decor",
+      titleAr: "ديكورات عشب 3D مع بديل الخشب",
+      titleEn: "3D Grass & Wood-Alternative Decor",
+      descAr: "تنفيذ ديكورات خارجية تجمع بين العشب الجداري ثلاثي الأبعاد (3D) وتكسيات بديل الخشب المقاوم للعوامل الجوية.",
+      descEn: "Exterior wall decor combining 3D artificial greenery with weather-resistant WPC wood alternatives."
+    },
+    {
+      serial: 25,
       src: "gallery/decor-4.jpeg",
       category: "panels",
       titleAr: "غرف سندويش بنل",
@@ -255,29 +288,29 @@
       descEn: "Design and construction of modern insulated sandwich panel rooms and backyard extensions."
     },
     {
-      serial: 25,
+      serial: 26,
       src: "gallery/decor-5.jpeg",
-      category: "panels",
-      titleAr: "غرف سندويش بنل",
-      titleEn: "Sandwich Panel Rooms",
-      descAr: "إنشاء وتجهيز غرف سندويش بنل خارجية ومجالس مودرن بأعلى معايير العزل الحراري والتشطيب الفاخر.",
-      descEn: "Turnkey modern insulated sandwich panel rooms and luxury outdoor extensions."
+      category: "decor",
+      titleAr: "ديكورات بديل الخشب",
+      titleEn: "Wood-Alternative Decor",
+      descAr: "تركيب تكسيات وديكورات بديل الخشب (WPC) الفاخرة المقاومة للرطوبة والحرارة للواجهات والجلسات الخارجية.",
+      descEn: "Installation of weather-resistant WPC wood-alternative cladding and exterior decorative finishes."
     },
     {
-      serial: 26,
+      serial: 27,
       src: "gallery/tensile-1.jpeg",
       category: "tensile",
-      titleAr: "مظلات الشد الإنشائي - رقم 26",
-      titleEn: "Tensile Shades - #26",
+      titleAr: "مظلات الشد الإنشائي - رقم 27",
+      titleEn: "Tensile Shades - #27",
       descAr: "مظلات هندسية بأقمشة PVC و PVDF المقاومة للماء.",
       descEn: "Giant engineered shades with waterproof PVC/PVDF fabrics."
     },
     {
-      serial: 27,
+      serial: 28,
       src: "gallery/tensile-2.jpeg",
       category: "tensile",
-      titleAr: "مظلات الشد الإنشائي - رقم 27",
-      titleEn: "Tensile Shades - #27",
+      titleAr: "مظلات الشد الإنشائي - رقم 28",
+      titleEn: "Tensile Shades - #28",
       descAr: "مظلات هندسية بأقمشة PVC و PVDF المقاومة للماء.",
       descEn: "Giant engineered shades with waterproof PVC/PVDF fabrics."
     }
@@ -338,10 +371,12 @@
         '</svg>'
       );
 
+      const altSrcAttr = item.altSrc ? (' data-alt-src="' + item.altSrc + '"') : '';
+
       const cardHtml =
         '<div class="gallery-item" data-category="' + item.category + '" data-serial="' + badgeNum + '">' +
           '<div class="gallery-img-wrapper" style="object-fit: cover; width: 100%; height: 100%;">' +
-            '<img src="' + item.src + '" alt="' + item.titleAr + ' - ' + item.descAr + '" loading="lazy" decoding="async" style="object-fit: cover; width: 100%; height: 100%;" data-fallback="' + fallbackSvg + '" onerror="window.__handleGalleryImgError&&window.__handleGalleryImgError(this)">' +
+            '<img src="' + item.src + '"' + altSrcAttr + ' alt="' + item.titleAr + ' - ' + item.descAr + '" loading="lazy" decoding="async" style="object-fit: cover; width: 100%; height: 100%;" data-fallback="' + fallbackSvg + '" onerror="window.__handleGalleryImgError&&window.__handleGalleryImgError(this)">' +
             '<span class="gallery-badge">#' + badgeNum + '</span>' +
           '</div>' +
           '<div class="gallery-card-body">' +
