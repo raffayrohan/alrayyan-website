@@ -514,10 +514,15 @@ html[dir="ltr"] .quote-step-item:hover {
 .inner-spec-tag{display:inline-block;align-self:flex-start;font-size:.74rem;font-weight:800;color:var(--accent-bronze-dark);background:rgba(182,141,82,.14);border:1px solid rgba(182,141,82,.35);padding:.2rem .6rem;border-radius:3px}
 .inner-spec-title{font-size:1.12rem;font-weight:800;color:var(--text-primary-dark)}
 .inner-spec-desc{font-size:.91rem;color:var(--text-secondary-dark);line-height:1.72}
-.serp-table-wrap{margin-top:2.5rem;overflow-x:auto;background:#FFF;border:1px solid rgba(182,141,82,.35);border-radius:var(--radius-sm);box-shadow:var(--shadow-editorial)}
-.serp-table{width:100%;border-collapse:collapse;min-width:620px;font-size:.9rem}
-.serp-table th{background:#161514;color:var(--accent-bronze-light);font-weight:800;text-align:start;padding:.95rem 1.1rem;border-bottom:2px solid var(--accent-bronze)}
-.serp-table td{padding:.85rem 1.1rem;border-bottom:1px solid rgba(22,21,20,.09);color:var(--text-primary-dark);vertical-align:top}
+html[lang="ar"] span.lang-ar,html[lang="ar"] strong.lang-ar{display:inline!important}
+html[lang="en"] span.lang-en,html[lang="en"] strong.lang-en{display:inline!important}
+html[lang="ar"] th.lang-ar,html[lang="ar"] td.lang-ar{display:table-cell!important}
+html[lang="en"] th.lang-en,html[lang="en"] td.lang-en{display:table-cell!important}
+.serp-table-wrap{margin-top:2.5rem;overflow-x:auto;background:#FFF;border:1px solid rgba(182,141,82,.38);border-radius:var(--radius-sm);box-shadow:var(--shadow-editorial)}
+.serp-table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:680px;font-size:.92rem}
+.serp-table thead tr{display:table-row!important}
+.serp-table th{display:table-cell!important;width:25%;background:#161514;color:var(--accent-bronze-light);font-weight:800;text-align:start;padding:1rem 1.15rem;border-bottom:2px solid var(--accent-bronze);vertical-align:middle;line-height:1.45}
+.serp-table td{display:table-cell!important;width:25%;padding:.95rem 1.15rem;border-bottom:1px solid rgba(22,21,20,.09);color:var(--text-primary-dark);vertical-align:middle;line-height:1.6}
 .serp-table tr:last-child td{border-bottom:none}
 .serp-table tr:nth-child(even) td{background:#FAF8F4}
 .icp-zones-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:2.25rem}
@@ -789,7 +794,7 @@ html[dir="ltr"] .quote-step-item:hover {
 <span class="lang-en" style="display:none;">Certified Sandwich Panel Thicknesses & Engineering Specifications in Jeddah (2026 Guide)</span>
 </div>
 <table class="serp-table">
-<thead><tr><th class="lang-ar">نوع وسماكة اللوح</th><th class="lang-ar">كثافة ومادة العزل</th><th class="lang-ar">الاستخدام المثالي في جدة</th><th class="lang-ar">كفاءة العزل والضمان</th><th class="lang-en" style="display:none;">Panel Thickness & Type</th><th class="lang-en" style="display:none;">Insulation Core & Density</th><th class="lang-en" style="display:none;">Ideal Application in Jeddah</th><th class="lang-en" style="display:none;">Efficiency & Warranty</th></tr></thead>
+<thead><tr><th><span class="lang-ar">نوع وسماكة اللوح</span><span class="lang-en" style="display:none;">Panel Thickness & Type</span></th><th><span class="lang-ar">كثافة ومادة العزل</span><span class="lang-en" style="display:none;">Insulation Core & Density</span></th><th><span class="lang-ar">الاستخدام المثالي في جدة</span><span class="lang-en" style="display:none;">Ideal Application in Jeddah</span></th><th><span class="lang-ar">كفاءة العزل والضمان</span><span class="lang-en" style="display:none;">Efficiency & Warranty</span></th></tr></thead>
 <tbody><tr>
 <td><strong class="lang-ar">سندويش بنل جداري وسقفي 5 سم</strong><strong class="lang-en" style="display:none;">Sandwich Panel 5 cm (Wall & Roof)</strong></td>
 <td><span class="lang-ar">بولي يوريثان (PUR) كثافة 40 كجم/م³</span><span class="lang-en" style="display:none;">Polyurethane (PUR) 40 kg/m³</span></td>
