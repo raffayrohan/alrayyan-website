@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alrayyan-panels.com/sitemap.xml
