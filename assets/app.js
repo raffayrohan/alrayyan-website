@@ -150,6 +150,7 @@
     }
     grids.forEach(function (grid) {
       grid.addEventListener("click", function (ev) {
+        if (ev.target.closest("a")) return; /* caption service links navigate */
         var fig = ev.target.closest("figure");
         if (fig) openLb(fig);
       });
