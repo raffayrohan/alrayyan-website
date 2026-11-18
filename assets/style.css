@@ -98,7 +98,7 @@ header.site.scrolled .nav{padding-block:7px}
 .hero h1::after{content:"";display:block;width:92px;height:4px;margin-top:18px;background:linear-gradient(90deg,var(--bronze) 0%,var(--bronze-l) 70%,transparent 100%)}
 [dir="rtl"] .hero h1::after{background:linear-gradient(270deg,var(--bronze) 0%,var(--bronze-l) 70%,transparent 100%)}
 .hero h1 .hl{color:var(--bronze-d)}
-.hero p.lead{font-size:1.07rem;color:#3E382F;margin-bottom:24px;max-width:60ch}
+.hero p.lead{font-size:1.07rem;color:#2A251D;font-weight:500;text-shadow:0 1px 0 rgba(250,246,236,.6);margin-bottom:24px;max-width:60ch}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
 .hero-crumbs{font-size:.86rem;color:var(--muted);padding-bottom:16px;font-weight:600}
 .hero-crumbs a{color:#6B4E22;font-weight:800}
@@ -125,6 +125,11 @@ header.site.scrolled .nav{padding-block:7px}
    One consistent rhythm: 68px block padding, eyebrow grouped with its heading. */
 main{counter-reset:sechead}
 section{padding:68px 0}
+/* section rhythm — consecutive sections on the SAME ground share one 68px
+   gap instead of stacking 68+68 of empty padding; a lone trailing sec-head
+   leaves no dead margin at a section's end. */
+section.alt+section.alt,section.dark+section.dark{padding-top:0}
+.sec-head:last-child{margin-bottom:0}
 .alt{background:var(--bg2)}
 section.dark{background:var(--charcoal);color:#EDE8DC}
 .sec-head{max-width:780px;margin-bottom:30px;counter-increment:sechead}
@@ -156,6 +161,16 @@ section.dark .sec-head::before{color:var(--bronze-l);border-bottom-color:var(--b
 .card-img img{width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform .6s ease}
 .card-img:hover img{transform:scale(1.06)}
 .card-img .pad{padding:18px 20px 22px;position:relative;z-index:1}
+/* photo cards — real service photo on top (4/3, old-repo style), body below.
+   Keeps every .card hover: bronze top line grows, lift, image zoom, shine
+   sweep across the photo, and the .more button fills bronze. */
+.card-photo{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.card-photo::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.38) 50%,transparent 58%);transform:translateX(-130%);transition:transform .8s ease;pointer-events:none}
+.card-photo:hover::before{transform:translateX(130%)}
+.card-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .6s ease}
+.card-photo:hover img{transform:scale(1.06)}
+.card-photo .pad{padding:18px 20px 22px;position:relative;z-index:1;display:flex;flex-direction:column;flex:1}
+.card-photo .pad p{flex:1}
 section.dark .card{background:var(--charcoal2);border-color:rgba(209,174,121,.3);box-shadow:0 18px 40px -18px rgba(0,0,0,.55)}
 section.dark .card h3{color:var(--alabaster)}
 section.dark .card p{color:var(--muted-l)}
@@ -276,7 +291,7 @@ section.dark .rev-when{color:var(--muted-l)}
 #toTop.show{opacity:1;visibility:visible;transform:none}
 #toTop:hover{background:var(--bronze-d)}
 /* reveal on scroll */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.reveal{opacity:.12;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
 .reveal.vis{opacity:1;transform:none}
 /* thin bronze scrollbar (desktop) */
 ::-webkit-scrollbar{width:10px}
